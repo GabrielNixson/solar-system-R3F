@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Provider } from 'rxdb-hooks';
+import HomePage from "./pages/HomePage";
+import Trial from "./pages/Trial";
+import ThreeTrial from "./pages/ThreeTrial";
+
 import './App.css';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider>
+      <Router>
+          <Routes>
+            {/* <Route exact path='/map' element={ <HomePage /> } /> */}
+            <Route exact path='/three' element={ <ThreeTrial /> } />
+            <Route exact path='/trial' element={ <Trial /> } />
+            <Route exact path='*' element={<div><h1>No such Page</h1></div>} />
+          </Routes>
+        </Router>
+    </Provider>
   );
 }
 
